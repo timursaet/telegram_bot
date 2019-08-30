@@ -5,11 +5,12 @@ var bot = new TelegramBot(token, {polling: true});
 
 var notes = [];
 
+if (text == 'Привет') bot.sendMessage(userId, 'Хай!');
+
 bot.onText(/напомни (.+) в (.+)/, function (msg, match) {
     var userId = msg.from.id;
     var text = match[1];
     var time = match[2];
-     if (text == 'Привет') bot.sendMessage(userId, 'Хай!');
 
     notes.push({ 'uid': userId, 'time': time, 'text': text });
 
