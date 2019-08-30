@@ -5,7 +5,11 @@ var bot = new TelegramBot(token, {polling: true});
 
 var notes = [];
 
-if (text == 'Привет') bot.sendMessage(userId, 'Хай!');
+bot.on('message', (msg) => {
+    const chatId = msg.chat.id;
+
+    if (msg == 'Привет') bot.sendMessage(chatId, 'Хай!');
+});
 
 bot.onText(/напомни (.+) в (.+)/, function (msg, match) {
     var userId = msg.from.id;
